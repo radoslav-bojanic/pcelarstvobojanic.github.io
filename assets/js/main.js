@@ -65,3 +65,34 @@
 				});
 
 })(jQuery);
+
+(function(){
+	emailjs.init({
+	  publicKey: "1hDmNcl17_EYGVWzT",
+	});
+ })();
+
+document.getElementById('sendMessageForm').addEventListener('submit', function(event) {
+	event.preventDefault();
+
+	const Name = document.getElementById('sendMessageName').value;
+	const Message = document.getElementById('sendMessageContent').value;
+
+	const fullMessage = `${Name} je poslao poruku:\n${Message}`;
+
+	const templateParams = {
+		from_name: document.getElementById('sendMessageEmail').value,
+		message:  fullMessage
+	};
+
+	alert(templateParams.message)
+
+	emailjs.send('service_c1ywtro', 'template_send_message', templateParams)
+		.then(function(response) {
+			console.log('SUCCESS!', response.status, response.text);
+			alert('Message sent!');
+		}, function(error) {
+			console.log('FAILED...', error);
+			alert('Failed to send message. Please try again.');
+		});
+});
