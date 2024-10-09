@@ -85,8 +85,6 @@ document.getElementById('sendMessageForm').addEventListener('submit', function(e
 		message:  fullMessage
 	};
 
-	alert(templateParams.message)
-
 	emailjs.send('service_c1ywtro', 'template_send_message', templateParams)
 		.then(function(response) {
 			console.log('SUCCESS!', response.status, response.text);
