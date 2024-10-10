@@ -1,5 +1,6 @@
 var title = `Pčelarstvo Bojanić`
 
+// title and icon shown in browser tab
 let headGlobal = `
     <title>${title}</title>
     <meta charset="utf-8" />
@@ -9,7 +10,7 @@ let headGlobal = `
 `;
 
 // Variable to use as head in every file
-document.getElementById('headGlobal').innerHTML = headGlobal;
+document.getElementById('head').innerHTML = headGlobal;
 
 let pageFooter = `
 <div class="container">
@@ -79,3 +80,38 @@ let pageFooter = `
 `;
 
 document.getElementById('footer').innerHTML = pageFooter;
+
+function getCurrentPage() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop(); // Get the last part of the path
+    return page.replace('.html', ''); // Remove the .html extension
+}
+
+const currentPage = getCurrentPage();
+
+// Header with navigation
+let pageHeader = `
+<!-- Logo -->
+						<h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="${currentPage === 'index' ? 'current' : ''}"><a href="index.html">Početna</a></li>
+								<li class="${currentPage === 'blog' ? 'current' : ''}">
+									<a href="#">Blog</a>
+									<ul>
+										<li><a href="#">Zdravstveni benefiti</a></li>
+										<li><a href="#">Recepti</a></li>
+										<li><a href="#">Za pčelare</a></li>
+									</ul>
+								</li>
+								<li class="${currentPage === 'prodavnica' ? 'current' : ''}"><a href="o_nama.html">Prodavnica</a></li>
+								<li class="${currentPage === 'o_nama' ? 'current' : ''}"><a href="o_nama.html">O nama</a></li>
+								<li class="${currentPage === 'galerija' ? 'current' : ''}"><a href="galerija.html">Galerija</a></li>
+								<li  class="${currentPage === 'kontakt' ? 'current' : ''}"><a href="kontakt.html">Kontakt</a></li>
+							</ul>
+						</nav>
+`;
+
+document.getElementById('header').innerHTML = pageHeader;

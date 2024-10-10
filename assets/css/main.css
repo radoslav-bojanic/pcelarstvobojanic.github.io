@@ -3426,3 +3426,14 @@ input, select, textarea {
         height: 100%;
         border: 0;
     }
+
+	.box.titled {
+		text-align: center; /* Centriranje teksta */
+		flex: 0 1 24%; /* Prilagođava širinu svakog elementa (oko 24% širine) */
+		margin-bottom: 20px; /* Razmak ispod */
+	}
+
+	.image.titled {
+		width: 100%; /* Prilagođava sliku širini roditelja */
+    	height: auto; /* Održava proporcije slike */
+	}
