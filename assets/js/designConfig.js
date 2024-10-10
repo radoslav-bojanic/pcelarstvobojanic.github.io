@@ -88,27 +88,38 @@ function getCurrentPage() {
 }
 
 const currentPage = getCurrentPage();
+const galleryPages = ['galerija_pcele', 'galerija_behind_scenes', 'galerija_salas', 'galerija_proizvodi']
 
 // Header with navigation
 let pageHeader = `
-<!-- Logo -->
-						<h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
+                    <!-- Logo -->
+                    <div class="logo-container">
+                        <img src="images/logoDark_center.png" alt="Logo" class="logo">
+                    </div>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
 								<li class="${currentPage === 'index' ? 'current' : ''}"><a href="index.html">Početna</a></li>
-								<li class="${currentPage === 'blog' ? 'current' : ''}">
-									<a href="#">Blog</a>
+								<li class="${currentPage === 'prodavnica' ? 'current' : ''}"><a href="o_nama.html">Prodavnica</a></li>
+								<li class="${currentPage === 'o_nama' ? 'current' : ''}"><a href="o_nama.html">O nama</a></li>
+								<li class="${galleryPages.includes(currentPage) ? 'current' : ''}">
+                                    <a>Galerija</a>
+									<ul>
+										<li><a href="galerija_pcele.html">Pčelinji svet</a></li>
+										<li><a href="galerija_proizvodi.html">Naši proizvodi</a></li>
+                                        <li><a href="galerija_salas.html">Dom naših pčela</a></li>
+										<li><a href="galerija_behind_scenes.html">Iza scena</a></li>
+									</ul>
+                                </li>
+                                <li class="${currentPage === 'blog' ? 'current' : ''}">
+                                    <a>Blog</a>
 									<ul>
 										<li><a href="#">Zdravstveni benefiti</a></li>
 										<li><a href="#">Recepti</a></li>
 										<li><a href="#">Za pčelare</a></li>
 									</ul>
 								</li>
-								<li class="${currentPage === 'prodavnica' ? 'current' : ''}"><a href="o_nama.html">Prodavnica</a></li>
-								<li class="${currentPage === 'o_nama' ? 'current' : ''}"><a href="o_nama.html">O nama</a></li>
-								<li class="${currentPage === 'galerija' ? 'current' : ''}"><a href="galerija.html">Galerija</a></li>
 								<li  class="${currentPage === 'kontakt' ? 'current' : ''}"><a href="kontakt.html">Kontakt</a></li>
 							</ul>
 						</nav>
