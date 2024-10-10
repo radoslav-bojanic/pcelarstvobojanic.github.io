@@ -15,5 +15,4 @@ import { } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js"
 
   // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const storage = firebase.storage();
+const store = firebase.storage();
