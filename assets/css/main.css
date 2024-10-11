@@ -2120,6 +2120,10 @@ input, select, textarea {
 				width: 100%;
 			}
 
+			.image.left.responsive img:hover {
+				opacity: 0.8; /* Change the opacity on hover */
+			}
+
 		.image.fit {
 			display: block;
 		}
@@ -2127,6 +2131,10 @@ input, select, textarea {
 			.image.fit img {
 				display: block;
 				width: 100%;
+			}
+
+			.image.fit.responsive img:hover {
+				opacity: 0.8; /* Change the opacity on hover */
 			}
 
 		.image.featured {
@@ -3436,4 +3444,36 @@ input, select, textarea {
 	.image.titled {
 		width: 100%; /* Prilagođava sliku širini roditelja */
     	height: auto; /* Održava proporcije slike */
+	}
+
+	.image.icon {
+		width: 70%;
+		height: auto; /* Održava proporcije slike */
+	}
+
+	.image.icon:hover {
+		opacity: 0.;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	select {
+		width: 100%;
+		text-align-last: center;
+	  }
+
+	  .select.state {
+		width: 100%;
+		display: inline-block;
+	  }
+
+	.select-label {
+		text-align-last: center;
+	}
+
+	.number-input {
+		width: 100%;
+		text-align-last: center;
 	}

@@ -1,5 +1,4 @@
 var title = `Pčelarstvo Bojanić`
-
 // title and icon shown in browser tab
 let headGlobal = `
     <title>${title}</title>
@@ -88,8 +87,9 @@ function getCurrentPage() {
 }
 
 const currentPage = getCurrentPage();
-const galleryPages = ['galerija_pcele', 'galerija_behind_scenes', 'galerija_salas', 'galerija_proizvodi']
-
+const galleryPages = ['galerija_pcele', 'galerija_behind_scenes', 'galerija_salas', 'galerija_proizvodi', 'galerija']
+const blogPages = ['blog', 'blog_zdravstveni_benefiti', 'blog_recepti', 'blog_za_pcelare']
+const shopPages = ['prodavnica', 'prodavnica_med', 'prodavnica_vosak', 'prodavnica_zdravlje']
 // Header with navigation
 let pageHeader = `
                     <!-- Logo -->
@@ -101,10 +101,17 @@ let pageHeader = `
 						<nav id="nav">
 							<ul>
 								<li class="${currentPage === 'index' ? 'current' : ''}"><a href="index.html">Početna</a></li>
-								<li class="${currentPage === 'prodavnica' ? 'current' : ''}"><a href="o_nama.html">Prodavnica</a></li>
+								<li class="${shopPages.includes(currentPage) ? 'current' : ''}">
+                                    <a href="prodavnica.html">Prodavnica</a>
+                                    <ul>
+										<li><a href="prodavnica_med.html">Med</a></li>
+										<li><a href="prodavnica_vosak.html">Vosak</a></li>
+                                        <li><a href="prodavnica_zdravlje.html">Zdravlje i vitalnost</a></li>
+									</ul>
+                                </li>
 								<li class="${currentPage === 'o_nama' ? 'current' : ''}"><a href="o_nama.html">O nama</a></li>
 								<li class="${galleryPages.includes(currentPage) ? 'current' : ''}">
-                                    <a>Galerija</a>
+                                    <a href="galerija.html">Galerija</a>
 									<ul>
 										<li><a href="galerija_pcele.html">Pčelinji svet</a></li>
 										<li><a href="galerija_proizvodi.html">Naši proizvodi</a></li>
@@ -112,12 +119,12 @@ let pageHeader = `
 										<li><a href="galerija_behind_scenes.html">Iza scene</a></li>
 									</ul>
                                 </li>
-                                <li class="${currentPage === 'blog' ? 'current' : ''}">
-                                    <a>Blog</a>
+                                <li class="${blogPages.includes(currentPage) ? 'current' : ''}">
+                                    <a href="blog.html">Blog</a>
 									<ul>
-										<li><a href="#">Zdravstveni benefiti</a></li>
-										<li><a href="#">Recepti</a></li>
-										<li><a href="#">Za pčelare</a></li>
+										<li><a href="blog_zdravstveni_benefiti.html">Zdravstveni benefiti</a></li>
+										<li><a href="blog_recepti.html">Recepti</a></li>
+										<li><a href="blog_za_pcelare.html">Za pčelare</a></li>
 									</ul>
 								</li>
 								<li  class="${currentPage === 'kontakt' ? 'current' : ''}"><a href="kontakt.html">Kontakt</a></li>
