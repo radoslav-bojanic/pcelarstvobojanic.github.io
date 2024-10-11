@@ -109,7 +109,7 @@ let pageHeader = `
 										<li><a href="galerija_pcele.html">Pčelinji svet</a></li>
 										<li><a href="galerija_proizvodi.html">Naši proizvodi</a></li>
                                         <li><a href="galerija_salas.html">Dom naših pčela</a></li>
-										<li><a href="galerija_behind_scenes.html">Iza scena</a></li>
+										<li><a href="galerija_behind_scenes.html">Iza scene</a></li>
 									</ul>
                                 </li>
                                 <li class="${currentPage === 'blog' ? 'current' : ''}">
