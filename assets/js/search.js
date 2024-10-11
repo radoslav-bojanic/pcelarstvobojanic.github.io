@@ -1,6 +1,8 @@
 
 const shopSubPages = ['prodavnica_med', 'prodavnica_vosak', 'prodavnica_zdravlje']
 
+
+
 function filterPosts() {
 
     const currentPage = getCurrentPage()

@@ -3477,3 +3477,9 @@ input, select, textarea {
 		width: 100%;
 		text-align-last: center;
 	}
+
+	.cena-text {
+		border-bottom: 2px solid;
+		padding-right: 10px;
+		display: inline-block;
+	}
