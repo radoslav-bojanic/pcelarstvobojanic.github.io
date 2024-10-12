@@ -62,59 +62,55 @@
 									<!-- Content -->
 
 										<article>
-											<header>
-												<h2>Proizvodi za zdravlje</h2>
-													<p>Ovde možete pronaći našu ponudu prirodnih proizvoda za zdravlje, 
-														uključujući propolis i imuno med. Ovi proizvodi su bogati hranljivim sastojcima 
-														i pomažu u jačanju imunološkog sistema.</p>
-											</header>
+											<header id="korpa_num_of_elements">
+												<h2>Vaša korpa</h2>
+											</header>	
 										</article>
-										<div class="container">
-											<div class="row">
-												<section class="col-4 col-12-narrower">
-													<div class="box titled">
-														<a href="html/products_html/zdravlje_products/propolis.html" class="image fit responsive"><img src="images/products/zdravlje/propolis.png" alt="" /></a>
-														<div class="inner">
-															<h3>Propolis kapi</h3>
-														</div>
-													</div>
-												</section>
-											</div>
+
+										<!-- product items constainer -->
+										<div class="container" id="productContainer">
+												<!-- Will be filled dynamically  -->
 										</div>
 
 								</div>
 							</div>
+							<!-- Sidebar -->
 							<div class="col-4 col-12-narrower">
-								<div id="sidebar">
-
-									<!-- Sidebar -->
-
-										<section>
-											<div class="row">
-												<div class="col-8 col-10-mobilep">
-													<input type="zdravsteni_benefiti_search_input" name="zdravsteni_benefiti_search_input" id="zdravsteni_benefiti_search_input" placeholder="Pretraži" style="width: calc(100%);"/>
-												</div>
-												<div class="col-3 col-2-mobilep">
-													<img class="image icon" src="images/search_icon.png" onclick="filterPosts()"/>
-												</div>
-											</div>
-											<h3>Dostava</h3>
-											<p>Sve proizvode dostavljamo kurirskim službama po aktuelnim cenama. Plaćanje je isključivo pouzećem</p>
-											<footer>
-												<a href="#" class="button">Korpa</a>
-											</footer>
+									<h3 id="ukupna_cena">Ukupna cena:</h3>
+									<h3>Podaci za porudžbinu</h3>
+									<form id="orderForm">
+									<div class="row gtr-50">
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="ime" id="ime" placeholder="Ime" />
+										</div>
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="prezime" id="prezime" placeholder="Prezime" />
+										</div>
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="grad" id="grad" placeholder="Grad" />
+										</div>
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="post_number" id="post_number" placeholder="Poštanski broj" />
+										</div>
+										<div class="col-12 col-12-mobilep">
+											<input type="text" name="adresa" id="adresa" placeholder="Adresa" />
+										</div>
+										<div class="col-12 col-12-mobilep">
+											<input type="text" name="email" id="email_for_order" placeholder="E-mail" />
+										</div>
+										<div class="col-12 col-12-mobilep">
+											<input type="text" name="napomena" id="napomena" placeholder="Dodatna napomena" />
+										</div>
+									</div>
+								</form>
+									<div class="row" style="margin-top: 5px;">
+										<section class="col-6 col-6-narrower">
+											<a class="button fit" onclick="handleOrder()">Poruči</a>
 										</section>
-
-										<section>
-											<h3>Izabrano za vas</h3>
-											<ul class="links">
-												<li><a href="#">Bademi u medu</a></li>
-												<li><a href="#">Propolis kapi</a></li>
-												<li><a href="#">Voštane sveće</a></li>
-											</ul>
+										<section class="col-6 col-6-narrower">
+											<a class="button fit" onclick="removeAllItemsFromCart()">Isprazni korpu</a>
 										</section>
-
-								</div>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -203,7 +199,8 @@
         		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 			</script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/search.js"></script>
+			<script src="assets/js/prodavnicaConfig.js"></script>
+			<script src="assets/js/korpa.js"></script>
 
 	</body>
 </html>
