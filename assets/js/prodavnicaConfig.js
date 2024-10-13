@@ -9,21 +9,34 @@ const CartToItemImageMapping = {
 };
 
 /* cart items that have type, weight alongside number of items */
-const typeWeightCartItems = ['livadski_med'];
-const weightCartItems = ['orasasti_plodovi_u_medu', 'med_sa_sacem', 'propolis'];
+const typeWeightCartItems = ['livadski_med', 'orasasti_plodovi_u_medu'];
+const weightCartItems = ['med_sa_sacem', 'propolis'];
 /* Cart items with numer only */
-const numberOnlyCartItems = [];
 
 const articlePrices = {
     'livadski_med': { //mapping: kolicina -> cena
         '300g':400,
-        '5300g': 500,
+        '500g': 500,
         '1000g': 900
     },
     'orasasti_plodovi_u_medu': {
-        '300g': 500,
-        '700g': 800,
-        '1000g': 1200
+        'Orah': {
+            '300g': 500,
+            '500g': 800
+        },
+        'Badem': {
+            '200g': 500,
+            '300g': 800
+        },
+        'Lešnik': {
+            '100g': 500,
+            '900g': 800
+        },
+        'Mešavina': {
+            '3000g': 500,
+            '5000g': 800
+        }
+        
     },
     'med_sa_sacem': {
         '500g': 700,

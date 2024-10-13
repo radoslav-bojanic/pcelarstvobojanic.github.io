@@ -14,7 +14,9 @@ let headGlobal = `
     <link rel="icon" type="image/png" href="images/logoDark_center.png" />
 `;
 
-if('index' != getCurrentPage())
+headsToIgnore = ['index', 'livadski_med', 'med_sa_sacem']
+
+if(!headsToIgnore.includes(getCurrentPage()))
 {
 	// Variable to use as head in every file
 	document.getElementById('head').innerHTML = headGlobal;
