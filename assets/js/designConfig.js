@@ -1,3 +1,9 @@
+function getCurrentPage() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop(); // Get the last part of the path
+    return page.replace('.html', ''); // Remove the .html extension
+}
+
 var title = `Pčelarstvo Bojanić`
 // title and icon shown in browser tab
 let headGlobal = `
@@ -8,8 +14,11 @@ let headGlobal = `
     <link rel="icon" type="image/png" href="images/logoDark_center.png" />
 `;
 
-// Variable to use as head in every file
-document.getElementById('head').innerHTML = headGlobal;
+if('index' != getCurrentPage())
+{
+	// Variable to use as head in every file
+	document.getElementById('head').innerHTML = headGlobal;
+}
 
 let pageFooter = `
 <div class="container">
@@ -80,11 +89,7 @@ let pageFooter = `
 
 document.getElementById('footer').innerHTML = pageFooter;
 
-function getCurrentPage() {
-    const path = window.location.pathname;
-    const page = path.split("/").pop(); // Get the last part of the path
-    return page.replace('.html', ''); // Remove the .html extension
-}
+
 
 const currentPage = getCurrentPage();
 const galleryPages = ['galerija_pcele', 'galerija_behind_scenes', 'galerija_salas', 'galerija_proizvodi', 'galerija']
