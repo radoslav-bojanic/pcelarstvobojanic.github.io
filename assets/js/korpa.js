@@ -56,13 +56,13 @@ function addToCartButtonClicked()
     var tezina = null;
     if(weight)
     {
-        tezina = weight.value;
+        tezina = weight.options[weight.selectedIndex].text;
     }
 
     var tip = null;
     if(type)
     {
-        tip = type.value;
+        tip = type.options[type.selectedIndex].text;
     }
 
     const item = {
@@ -165,34 +165,23 @@ function updateStateOptionsWithVariant(htmlId, priceArray)
   {
     const option = document.createElement('option');
     option.value = priceArray[weight]; // Set the value
-    option.textContent = `${weight}`; // Set the display text
+    option.textContent = priceArray[weight]; // Set the display text
     weightSelect.appendChild(option);
     
   }
 }
 
-function updateWeightSelectOptions(id, itemId)
+function updateWeightSelectOptions(id, item)
 {
     const weightSelect = document.getElementById(id);
     if(weightSelect)
     {
       weightSelect.innerHTML = '';
-        const prices = articlePrices[itemId];
+        const prices = articlePrices[item.item];
         if(isNestedObject(prices))
         {
-          const stateSelectId = id.replace('weightSelect', 'stateSelect')
-          const stateSelect = document.getElementById(stateSelectId);
-          /* Iterate through all variants */
-          for(const variant in prices)
-          {
-            /* First update all variants */
-            const option = document.createElement('option');
-            option.value = variant; // Set the value
-            option.textContent = `${variant}`; // Set the display text
-            stateSelect.appendChild(option);
-          }
-          const keys = Object.keys(prices);
-          updateStateOptionsWithVariant(id, prices[keys[0]]);
+          const keys = Object.keys(prices[item.type]);
+          updateStateOptionsWithVariant(id, keys);
         }
         else
         {
@@ -212,6 +201,32 @@ function updateWeightSelectOptions(id, itemId)
 
 }
 
+function updateTypeSelectOptions(typeSelectHtmlId, item)
+{
+  const typeSelect = document.getElementById(typeSelectHtmlId);
+  if(typeSelect)
+  {
+    if(isNestedObject(articlePrices[item.item]))
+    {
+      const typeArray = Object.keys(articlePrices[item.item]);
+      typeSelect.innerHTML = '';
+
+      for(variant in typeArray)
+      {
+         // Create a new option element
+         const option = document.createElement('option');
+         option.value = typeArray[variant]; // Set the value
+         option.textContent = typeArray[variant]; // Set the display text
+
+         // Append the option to the select element
+         typeSelect.appendChild(option);
+      }
+      typeSelect.value = item.type;
+    }
+
+  }
+}
+
 /* Cart page functions */
 function loadCartItems()
 {
@@ -223,7 +238,9 @@ function loadCartItems()
         {
             const cartObject = constructTypeWeightCartItem(item);
             productContainer.appendChild(cartObject);
-            updateWeightSelectOptions(`weightSelect_${item.id}`, item.item);
+            updateWeightSelectOptions(`weightSelect_${item.id}`, item);
+            updateTypeSelectOptions(`stateSelect_${item.id}`, item);
+
             //add product parameters update listener
             const weightSelect = document.getElementById(`weightSelect_${item.id}`);
             const stateSelect = document.getElementById(`stateSelect_${item.id}`);
@@ -240,9 +257,9 @@ function loadCartItems()
               }
           }
 
-            weightSelect.addEventListener('change', () => updateCartItem(item.id))
-            stateSelect.addEventListener('change', () => updateCartItem(item.id))
-            quantitySelect.addEventListener('change', () => updateCartItem(item.id))
+            weightSelect.addEventListener('change', () => updateCartItem(item.id, 'weight'))
+            stateSelect.addEventListener('change', () => updateCartItem(item.id, 'type'))
+            quantitySelect.addEventListener('change', () => updateCartItem(item.id, 'quantity'))
 
         }
         else if(weightCartItems.includes(item.item))
@@ -254,8 +271,8 @@ function loadCartItems()
             const weightSelect = document.getElementById(`weightSelect_${item.id}`);
             const quantitySelect = document.getElementById(`quantity_${item.id}`);
 
-            weightSelect.addEventListener('change', () => updateCartItem(item.id))
-            quantitySelect.addEventListener('change', () => updateCartItem(item.id))
+            weightSelect.addEventListener('change', () => updateCartItem(item.id, 'weight'))
+            quantitySelect.addEventListener('change', () => updateCartItem(item.id, 'quantity'))
         }
         else if(numberOnlyCartItems.includes(item.item))
         {
@@ -264,7 +281,7 @@ function loadCartItems()
 
             const quantitySelect = document.getElementById(`quantity_${item.id}`);
 
-            quantitySelect.addEventListener('change', () => updateCartItem(item.id))
+            quantitySelect.addEventListener('change', () => updateCartItem(item.id, 'quantity'))
         }
       });
 }
@@ -309,43 +326,69 @@ function removeAllItemsFromCart()
     localStorage.clear();
 }
 
+function getPriceFromItemObject(item)
+{
+  if(isNestedObject(articlePrices[item.item]))
+  {
+    return articlePrices[item.item][item.type][item.weight];
+  }
+  return articlePrices[item.item][item.weight];
+}
+
 function mainCartUpdatePrice()
 {
+
     const cart = JSON.parse(localStorage.getItem(CartName)) || [];
     var price = 0;
 
     cart.forEach(item => {
-        price += articlePrices[item.item][item.weight] * item.quantity;
+        price += getPriceFromItemObject(item) * item.quantity;
     })
+
+
 
     const mainPrice = document.getElementById('ukupna_cena');
     mainPrice.innerHTML = `Ukupna cena: ${price} RSD`;
 
 }
 
-function updateCartItem(id)
+function updateCartItem(id, callbackClient)
 {
-    const cart = JSON.parse(localStorage.getItem(CartName)) || [];
 
-    // Find the item in the cart based on its id
-    const itemIndex = cart.findIndex(item => item.id === id);
 
-    const weightSelect = document.getElementById(`weightSelect_${id}`);
-    const stateSelect = document.getElementById(`stateSelect_${id}`);
-    const quantitySelect = document.getElementById(`quantity_${id}`);
+  const cart = JSON.parse(localStorage.getItem(CartName)) || [];
 
+  // Find the item in the cart based on its id
+  const itemIndex = cart.findIndex(item => item.id === id);
+
+  const weightSelect = document.getElementById(`weightSelect_${id}`);
+  const stateSelect = document.getElementById(`stateSelect_${id}`);
+  const quantitySelect = document.getElementById(`quantity_${id}`);
+
+  if(callbackClient == 'type')
+  {
+    cart[itemIndex].type = stateSelect.value; // update cart item here so object can be passed to change weight/select options
+    const selectedOption = stateSelect.value;
+    updateTypeSelectOptions(`stateSelect_${id}`, cart[itemIndex]);
+    updateWeightSelectOptions(`weightSelect_${id}`, cart[itemIndex]);
+    stateSelect.value = selectedOption;
+    cart[itemIndex].weight = weightSelect.value;
+  }
+  else
+  {
     if(weightSelect)
     {
         cart[itemIndex].weight = weightSelect.value;
     }
+  }
 
-    if(stateSelect)
-    {
-        cart[itemIndex].type = stateSelect.value;
-    }
-    cart[itemIndex].quantity = quantitySelect.value;
-    localStorage.setItem(CartName, JSON.stringify(cart));
-    mainCartUpdatePrice();
+  if(stateSelect)
+  {
+      cart[itemIndex].type = stateSelect.value;
+  }
+  cart[itemIndex].quantity = quantitySelect.value;
+  localStorage.setItem(CartName, JSON.stringify(cart));
+  mainCartUpdatePrice();
 }
 
 /* Function to construct html object of med object for cart display */
@@ -356,6 +399,7 @@ function constructTypeWeightCartItem(item)
     itemDiv.classList.add('row');
     itemDiv.style.marginBottom = '10px';
     itemDiv.id = `cart_item_${item.id}`;
+    
 
     itemDiv.innerHTML = `
     <section class="col-2 col-3-narrower col-5-mobilep">
@@ -388,6 +432,7 @@ function constructTypeWeightCartItem(item)
       </div>
     </section>
   `;
+
   return itemDiv;
 }
 
