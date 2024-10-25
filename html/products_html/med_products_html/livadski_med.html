@@ -97,7 +97,7 @@
 										<div class="container">
 											<div class="row">
 												<section class="col-6 col-6-narrower col-12-mobilep">
-														<a href="#" class="image left"><img id='productImage' alt="" /></a>
+														<a class="image left"><img id='productImage' alt="" /></a>
 														<h2 class="cena-text" id="cena"> Cena: </h2>
 												</section>
 												<section class="col-6 col-6-narrower col-12-mobilep">
@@ -118,16 +118,11 @@
 												<section class="col-3 col-4-narrower">
 													<label class="select-label">Težina</label>
 													<select id="weightSelect", name="select_weight">
-														<option value="300g">300g</option>
-														<option value="500g">500g</option>
-														<option value="1000g" selected>1000g</option>
 													</select>
 												</section>
 												<section class="col-3 col-4-narrower">
-													<label class="select-label">Stanje</label>
-													<select id="stateSelect" name="select_state" class="select state">
-														<option value="tecan" selected>Tečan</option>
-														<option value="kristalisan">Kristalisan</option>
+													<label class="select-label">Tip</label>
+													<select id="typeSelect" name="select_state" class="select state">
 													</select>
 												</section>
 												<section class="col-3 col-4-narrower">
@@ -135,7 +130,7 @@
 													<input class="number-input" type="number" id="quantity" name="quantity" min="1" max="99" value="1" />
 												</section>
 												<section class="col-3 col-12-narrower">
-													<a class="button" id = "addToCardButton" onclick = "addToCartButtonClicked()" >Dodaj u korpu</a>
+													<a class="button" id = "addToCardButton" >Dodaj u korpu</a>
 												</section>
 											</div>
 											
@@ -261,8 +256,7 @@
         		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 			</script>
 			<script src="../../../assets/js/main.js"></script>
-			<script src="../../../assets/js/prodavnicaConfig.js"></script>
-			<script src="../../../assets/js/korpa.js"></script>
+			<script type = "module" src="../../../assets/js/korpa/singleItemHandler.js"></script>
 
 	</body>
 </html>
