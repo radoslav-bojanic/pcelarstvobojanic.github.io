@@ -98,18 +98,10 @@
 									<!-- Sidebar -->
 
 										<section>
-											<div class="row">
-												<div class="col-8 col-10-mobilep">
-													<input type="zdravsteni_benefiti_search_input" name="zdravsteni_benefiti_search_input" id="zdravsteni_benefiti_search_input" placeholder="Pretraži" style="width: calc(100%);"/>
-												</div>
-												<div class="col-3 col-2-mobilep">
-													<img class="image icon" src="images/search_icon.png" onclick="filterPosts()"/>
-												</div>
-											</div>
 											<h3>Dostava</h3>
 											<p>Sve proizvode dostavljamo kurirskim službama po aktuelnim cenama. Plaćanje je isključivo pouzećem</p>
 											<footer>
-												<a href="#" class="button">Korpa</a>
+												<a href="korpa.html" id="korpa" class="button">Korpa</a>
 											</footer>
 										</section>
 
@@ -211,7 +203,7 @@
         		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 			</script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/search.js"></script>
+			<script type="module" src="assets/js/korpa/prodavnicaPageHandler.js"></script>
 
 	</body>
 </html>

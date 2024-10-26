@@ -62,73 +62,47 @@
 									<!-- Content -->
 
 										<article>
-											<header>
-												<h2>Vosak i sveće</h2>
-												<p>Ovde možete pronaći našu ponudu pčelinjeg voska i sveća. 
-													Svaki proizvod je prirodan i ručno izrađen, a dostupni su u različitim oblicima i mirisima.</p>
-											</header>
+											<header id="korpa_num_of_elements">
+												<h2>Vaša porudžbina je uspešno primljena!</h2>
+												<p> Uskoro će vam stići email obaveštenja. </p>
+											</header>	
 										</article>
-										<div class="container">
-											<h3>Još uvek nema proizvoda.</h3>
-											<!-- <div class="row">
-												<section class="col-4 col-12-narrower">
-													<div class="box titled">
-														<a href="#" class="image fit responsive"><img src="images/products/med/med.png" alt="" /></a>
-														<div class="inner">
-															<h3>Livadski med</h3>
+
+										<!-- product items constainer -->
+										<div class="container" id="productContainer">
+												<!-- Will be filled dynamically  -->
+												 <!-- <div class="row">
+													<section class="col-2 col-3-narrower col-5-mobilep">
+														<a href="#" class="image fit"><img id='productImage' class='productImage' src='' alt="" /></a>
+													</section>
+													<section class="col-8 col-6-narrower">
+														<div class="row aln-bottom">
+														<section class="col-3 col-4-narrower">
+															<label class="select-label">Težina</label>
+															<select id="" name="select_weight">
+															<option value="300g">300g</option>
+															<option value="500g">500g</option>
+															<option value="1000g">1000g</option>
+															</select>
+														</section>
+														<section class="col-3 col-6-narrower">
+															<label class="select-label">Stanje</label>
+															<select id="" name="select_state">
+															<option value="tecan">Tečan</option>
+															<option value="kristalisan">Kristalisan</option>
+															</select>
+														</section>
+														<section class="col-3 col-3-narrower">
+															<label class="select-label">Količina</label>
+															<input class="number-input" type="number" id="" name="quantity" min="1" max="99" value="1" />
+														</section>
+														<section class="col-3 col-6-narrower">
+															<a class="button">Obriši</a>
+														</section>
 														</div>
-													</div>
-												</section>
-												<section class="col-4 col-12-narrower">
-													<div class="box titled">
-														<a href="#" class="image fit responsive"><img src="images/products/med/bademi_u_medu.png" alt="" /></a>
-														<div class="inner">
-															<h3>Bademi u medu</h3>
-														</div>
-													</div>
-												</section>
-												<section class="col-4 col-12-narrower">
-													<div class="box titled">
-														<a href="#" class="image fit responsive"><img src="images/products/med/med_sa_sacem.png" alt="" /></a>
-														<div class="inner">
-															<h3>Med sa saćem</h3>
-														</div>
-													</div>
-												</section>
-											</div> -->
+													</section>
+												 </div> -->
 										</div>
-
-								</div>
-							</div>
-							<div class="col-4 col-12-narrower">
-								<div id="sidebar">
-
-									<!-- Sidebar -->
-
-										<section>
-											<div class="row">
-												<div class="col-8 col-10-mobilep">
-													<input type="zdravsteni_benefiti_search_input" name="zdravsteni_benefiti_search_input" id="zdravsteni_benefiti_search_input" placeholder="Pretraži" style="width: calc(100%);"/>
-												</div>
-												<div class="col-3 col-2-mobilep">
-													<img class="image icon" src="images/search_icon.png" onclick="filterPosts()"/>
-												</div>
-											</div>
-											<h3>Dostava</h3>
-											<p>Sve proizvode dostavljamo kurirskim službama po aktuelnim cenama. Plaćanje je isključivo pouzećem</p>
-											<footer>
-												<a href="korpa.html" id="korpa" class="button">Korpa</a>
-											</footer>
-										</section>
-
-										<section>
-											<h3>Izabrano za vas</h3>
-											<ul class="links">
-												<li><a href="#">Bademi u medu</a></li>
-												<li><a href="#">Propolis kapi</a></li>
-												<li><a href="#">Voštane sveće</a></li>
-											</ul>
-										</section>
 
 								</div>
 							</div>
@@ -219,7 +193,6 @@
         		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 			</script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/search.js"></script>
 
 	</body>
 </html>

@@ -251,13 +251,15 @@ function writeOrderToFirebase(orderText) {
         .replace(/[.,#$/[\]]/g, ''); // Remove invalid characters
     const orderKey = `${orderText.ime}_${sanitizedDate}`;
 
-    // Write the order data to the database
-    firebase.database().ref('orders/' + orderKey).set(orderText)
+    // Return a Promise for the asynchronous operation
+    return firebase.database().ref('orders/' + orderKey).set(orderText)
         .then(() => {
             console.log("Order saved successfully!");
+            return true; // Optional: you can return a value if needed
         })
         .catch((error) => {
             console.error("Error saving order: ", error);
+            throw error; // Re-throw the error to handle it in placeOrder
         });
 }
 
@@ -287,17 +289,17 @@ function placeOrder()
     };
     const formattedDateTime = currentDateTime.toLocaleString('sr-RS', options); // Serbian locale
 
-    // // Check for empty fields
-    // if (!ime || !prezime || !grad || !postNumber || !adresa || !email || !napomena) {
-    //     alert("Sva polja moraju biti popunjena!"); // Alert for empty fields
-    //     return;
-    // }
+    // Check for empty fields
+    if (!ime || !prezime || !grad || !postNumber || !adresa || !email || !napomena) {
+        alert("Sva polja moraju biti popunjena!"); // Alert for empty fields
+        return;
+    }
 
-    // // Check if email contains '@'
-    // if (!email.includes('@')) {
-    //     alert("E-mail mora sadržati '@'!"); // Alert for invalid email
-    //     return;
-    // }
+    // Check if email contains '@'
+    if (!email.includes('@')) {
+        alert("E-mail mora sadržati '@'!"); // Alert for invalid email
+        return;
+    }
 
     const orderText = 
     {
@@ -314,7 +316,16 @@ function placeOrder()
         orderProcessed: false,
     };
 
-    writeOrderToFirebase(orderText);
+    writeOrderToFirebase(orderText)
+        .then(() => {
+            // Redirect to another page after the order is successfully written to Firebase
+            emptyCart();
+            window.location.href = 'porudzbina_primljena.html'; // Replace with your target page
+        })
+        .catch(error => {
+            console.error("Error writing order to Firebase:", error);
+            alert("Došlo je do greške prilikom obrade porudžbine. Pokušajte ponovo."); // Alert for errors
+        });
 }
 
 function updateTotalPrice()
