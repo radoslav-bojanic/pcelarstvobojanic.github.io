@@ -136,10 +136,10 @@
 								</form>
 									<div class="row" style="margin-top: 5px;">
 										<section class="col-6 col-6-narrower">
-											<a class="button fit" onclick="handleOrder()">Poruči</a>
+											<a class="button fit" id="placeOrderButton">Poruči</a>
 										</section>
 										<section class="col-6 col-6-narrower">
-											<a class="button fit" onclick="removeAllItemsFromCart()">Isprazni korpu</a>
+											<a class="button fit" id="emptyCartButton">Isprazni korpu</a>
 										</section>
 									</div>
 							</div>
@@ -229,6 +229,8 @@
 			<script type="text/javascript"
         		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 			</script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script type = "module" src="assets/js/korpa/cartPageHandler.js"></script>
 

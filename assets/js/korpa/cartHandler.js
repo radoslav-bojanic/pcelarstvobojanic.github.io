@@ -31,7 +31,7 @@ export function updateItemToCart(id, name, type, weight, quantity) {
 
   if (existingItemIndex !== -1) {
       // If the item exists, update its quantity or other properties
-      cart[existingItemIndex].quantity += quantity;
+      cart[existingItemIndex].quantity = quantity;
       cart[existingItemIndex].name = name;
       cart[existingItemIndex].type = type;
       cart[existingItemIndex].weight = weight;
@@ -59,4 +59,18 @@ export function removeItemFromCart(id) {
 export function readAllCartItems()
 {
   return JSON.parse(localStorage.getItem(CartName)) || [];
+}
+
+export function getItemName(id)
+{
+  const cart = JSON.parse(localStorage.getItem(CartName)) || [];
+  const item = cart.find(item => item.id === id);
+  return item ? item.name : null; // or return "Item not found" for a message
+}
+
+export function getCartItem(id)
+{
+  const cart = JSON.parse(localStorage.getItem(CartName)) || [];
+  const item = cart.find(item => item.id === id);
+  return item ? item : null; // or return "Item not found" for a message
 }
