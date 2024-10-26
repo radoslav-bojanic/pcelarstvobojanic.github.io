@@ -128,6 +128,7 @@ function addToCartButtonClicked()
     const weight = weightRef ? weightRef.value : null;
     addItemToCart(getCurrentPageName(), type, weight, quantityRef.value);
     updateCartCount();
+    alert("Proizvod uspešno dodat u korpu!");
 }
 
 function updateCartCount()
