@@ -249,7 +249,7 @@ function writeOrderToFirebase(orderText) {
     const sanitizedDate = orderText.date
         .replace(/\s+/g, '_')   // Replace spaces with underscores
         .replace(/[.,#$/[\]]/g, ''); // Remove invalid characters
-    const orderKey = `${orderText.ime}_${sanitizedDate}`;
+    const orderKey = `${sanitizedDate}_${orderText.ime}`;
 
     // Return a Promise for the asynchronous operation
     return firebase.database().ref('orders/' + orderKey).set(orderText)
