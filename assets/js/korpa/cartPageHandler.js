@@ -245,6 +245,11 @@ function handleChange(itemId, changedElement) {
 }
 
 function writeOrderToFirebase(orderText) {
+    if(0 == getCartItemCount())
+    {
+        alert("Nije moguće poslati porudžbinu. Nema proizvoda u korpi.");
+        return;
+    }
     // Create a unique key for the new order
     const sanitizedDate = orderText.date
         .replace(/\s+/g, '_')   // Replace spaces with underscores
