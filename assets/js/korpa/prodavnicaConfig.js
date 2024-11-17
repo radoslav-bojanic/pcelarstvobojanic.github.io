@@ -42,20 +42,16 @@ export const articlePriceConfig = {
         'VariantDependent': true,
         'Prices':{
             'Orah': {
-                '300g': 100,
-                '500g': 200
+                '500g': 600
             },
             'Badem': {
-                '200g': 300,
-                '300g': 400
+                '500g': 600
             },
             'Lešnik': {
-                '100g': 500,
-                '900g': 600
+                '500g': 600
             },
             'Mešavina': {
-                '3000g': 700,
-                '5000g': 800
+                '500g': 600
             }
         }
     },
@@ -63,7 +59,7 @@ export const articlePriceConfig = {
         'VariantDependent': false,
         'Variants': false,
         'Prices':{
-            '30ml': 400
+            '20ml': 300
         }
     },
     'sveca_obicna': {
