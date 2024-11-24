@@ -18,6 +18,11 @@ export const CartToItemImageMapping = {
     'sveca_ukrasna_kosnica': 'images/products/vosak/sveca_kosnica.png',
     'sveca_ukrasna_model1': 'images/products/vosak/sveca_ukrasna_1.png',
     'sveca_ukrasna_model2': 'images/products/vosak/sveca_ukrasna_2.png',
+    'melem_lavanda': 'images/products/zdravlje/melem_lavanda.png',
+    'melem_menta': 'images/products/zdravlje/melem_menta.png',
+    'melem_ruzmarin': 'images/products/zdravlje/melem_ruzmarin.png',
+    'melem_propolis': 'images/products/zdravlje/melem_med_propolis.png',
+    'labelo': 'images/products/zdravlje/labelo.png',
 };
 
 export const articlePriceConfig = {
@@ -60,6 +65,49 @@ export const articlePriceConfig = {
         'Variants': false,
         'Prices':{
             '20ml': 300
+        }
+    },
+    'melem_lavanda': {
+        'VariantDependent': false,
+        'Variants': false,
+        'Prices':{
+            '30ml': 250,
+            '60ml': 500,
+            '120ml': 800
+        }
+    },
+    'melem_menta': {
+        'VariantDependent': false,
+        'Variants': false,
+        'Prices':{
+            '30ml': 250,
+            '60ml': 500,
+            '120ml': 800
+        }
+    },
+    'melem_ruzmarin': {
+        'VariantDependent': false,
+        'Variants': false,
+        'Prices':{
+            '30ml': 250,
+            '60ml': 500,
+            '120ml': 800
+        }
+    },
+    'melem_propolis': {
+        'VariantDependent': false,
+        'Variants': false,
+        'Prices':{
+            '30ml': 300,
+            '60ml': 600,
+            '120ml': 1000
+        }
+    },
+    'labelo': {
+        'VariantDependent': false,
+        'Variants': false,
+        'Prices':{
+            '5ml': 250
         }
     },
     'sveca_obicna': {
